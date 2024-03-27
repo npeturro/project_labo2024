@@ -7,10 +7,10 @@ const Books = (props) => {
     return (
         <div className="d-flex justify-content-center flex-wrap">
             {
-                props.books.map((book) => {
+                props.books.map((book, i) => {
                     return (
                         < BookItem
-                            key={book.pageCount} //solo porq por consola pedia una key sino cada book deberia tener un id
+                            key={i} //solo porq por consola pedia una key sino cada book deberia tener un id
                             title={book.bookTitle}
                             author={book.bookAuthor}
                             rating={book.bookRating}

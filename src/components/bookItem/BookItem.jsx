@@ -1,6 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
+//No importo proptypes porq no lo reconoce
+
 const BookItem = (props) => {
 
     const { title, author, pageCount, rating, imageUrl } = props
