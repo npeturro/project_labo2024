@@ -42,6 +42,7 @@ function App() {
 
   return (
     <div >
+      <a href="https://frro.cvg.utn.edu.ar/pluginfile.php/172899/mod_resource/content/4/U1.2%20L%C3%B3gica%20de%20componentes.pdf" target='_blank'>Ejercicio de práctica Logica de componentes</a>
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <Books
