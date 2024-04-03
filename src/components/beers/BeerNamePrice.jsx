@@ -14,7 +14,7 @@ function BeerNamePrice(props) {
                     <div key={i} style={{ display: 'inline-block', margin: '10px' }}>
                         <Card style={{ width: '18rem', backgroundColor: '#FFE4E1' }}>
                             <Card.Body>
-                                <Card.Title>{beer.beerName}</Card.Title>
+                                <Card.Title style={{color: "orange"}}>{beer.beerName}</Card.Title>
                                 <Card.Text>
                                     Precio: ${beer.price * 1010}
                                 </Card.Text>
