@@ -1,9 +1,16 @@
+import { useState } from "react";
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const BookItem = (props) => {
 
     const { title, author, pageCount, rating, imageUrl } = props
+
+    const [newTitle, setNewTitle] = useState(title)
+
+    const clickHandler = () => {
+        setNewTitle('Valor actualizado')
+    }
 
     return (
         <Card style={{ width: "22rem", marginTop: '3%'}} className="mx-3">
@@ -13,10 +20,11 @@ const BookItem = (props) => {
                 src={imageUrl !== "" ? imageUrl : "https://bit.ly/47NylZk"}
             />
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>{newTitle}</Card.Title>
                 <Card.Subtitle>{author}</Card.Subtitle>
                 <div>{rating?.length} estrellas</div>
                 <p>{pageCount} páginas</p>
+                <Button onClick={clickHandler}>Cambiar título</Button>
             </Card.Body>
         </Card>
 
