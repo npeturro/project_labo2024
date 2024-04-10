@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 import BookItem from './components/bookItem/BookItem';
 import Books from './components/books/Books';
@@ -5,7 +6,7 @@ import NewBook from './components/newBook/NewBook';
 
 function App() {
 
-  const books = [
+  const BOOKS = [
     {
       bookTitle: "100 años de soledad",
       bookAuthor: "Gabriel García Marquez",
@@ -39,11 +40,14 @@ function App() {
     },
   ];
 
+  const [books, setBooks] = useState(BOOKS)
+
   const addedBookHandler = (bookData) => {
 
     console.log('In App.js')
     console.log(bookData)
-    
+    setBooks((prev) => [...prev, bookData]);
+
 
   }
 
@@ -52,7 +56,7 @@ function App() {
       <a href="https://frro.cvg.utn.edu.ar/pluginfile.php/174763/mod_resource/content/4/U2.1_%20Manejo%20de%20state%20en%20React%20%281%29.pdf" target='_blank'>Ejercicio de práctica Manejo de State en React</a>
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
-      <NewBook onBookAdded = {addedBookHandler}/>
+      <NewBook onBookAdded={addedBookHandler} />
       <Books
         books={books}
       />

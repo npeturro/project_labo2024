@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { Button , Form} from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const BookForm = (props) => {
     const {
@@ -10,7 +10,7 @@ const BookForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAuthor, setEnteredAuthor] = useState("");
     const [enteredPageCount, setEnteredPageCount] = useState("");
-    const [enteredDate, setEnteredDate] = useState("");
+    const [enteredCalification, setEnteredCalification] = useState("");
 
     const changeTitleHandler = (event) => {
         setEnteredTitle(event.target.value)
@@ -25,22 +25,23 @@ const BookForm = (props) => {
     };
 
     const changeDateHandler = (event) => {
-        setEnteredDate(event.target.value)
+        setEnteredCalification(event.target.value)
     };
 
     const submitBookHandler = (event) => {
         event.preventDefault();
         const bookData = {
-            title: enteredTitle,
-            author: enteredAuthor,
+            bookTitle: enteredTitle,
+            bookAuthor: enteredAuthor,
             pageCount: enteredPageCount,
-            dateRead: Date(enteredDate).toString(),
+            bookRating: Array(enteredCalification).fill("*"),
+            imageUrl: "https://prodimage.images-bn.com/pimages/9781728260839_p0_v2_s1200x630.jpg"
         };
         onBookDataSaved(bookData)
         setEnteredTitle('')
         setEnteredAuthor('')
         setEnteredPageCount('')
-        setEnteredDate('')
+        setEnteredCalification('')
     }
 
     return (
@@ -50,7 +51,6 @@ const BookForm = (props) => {
                     value={enteredTitle}
                     onChange={changeTitleHandler}
                     type="text"
-                    required
                     placeholder="Título" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -58,7 +58,6 @@ const BookForm = (props) => {
                     value={enteredAuthor}
                     onChange={changeAuthorHandler}
                     type="text"
-                    required
                     placeholder="Autor" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -67,19 +66,14 @@ const BookForm = (props) => {
                     onChange={changePageCountHandler}
                     type="number"
                     placeholder="Páginas"
-                    required
-                    min="1"
-                    step="1" />
+                />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Control
-                    value={enteredDate}
+                    value={enteredCalification}
                     onChange={changeDateHandler}
-                    type="date"
-                    required
-                    min="2019-01-01" 
-                    max="2022-12-31"
-                    placeholder="¿Cuándo terminaste de leer el libro?" />
+                    type="number"
+                    placeholder="Calificación" />
             </Form.Group>
             <Button type="submit">Agregar lectura</Button>
         </Form>
