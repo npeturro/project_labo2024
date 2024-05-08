@@ -4,18 +4,20 @@ import {
     CardContent,
     Typography,
     IconButton,
+    CardActions,
+    Button,
     Unstable_Grid2 as Grid
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 const TaskFinish = (props) => {
 
-    const { task } = props
+    const { task, handleFinish, handleDelete } = props
 
     
     return (
         <div>
             {task.map((work) => (
-                !work.state && (
+                (!work.state && work.available) && (
                     <Card key={work.id} sx={{ width: 275, mt: 3, height: 235, backgroundColor: '#EBEBE4'}}>
                         <CardHeader
                             title={work.title}
@@ -30,6 +32,10 @@ const TaskFinish = (props) => {
                                 {work.description}
                             </Typography>
                         </CardContent>
+                        <CardActions sx={{justifyContent:'space-around'}}>
+                            <Button size="small" onClick={() => handleFinish(work.id)}>Re abrir</Button>
+                            <Button size="small" onClick={() => handleDelete(work.id)}>Eliminar</Button>
+                        </CardActions>
                     </Card>
                 )
             ))}

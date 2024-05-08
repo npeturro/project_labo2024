@@ -13,18 +13,21 @@ function App() {
       title: "Realizar práctica obligatoria 1",
       description: "Se deberá realizar la práctica presentada en el CVG opt 1",
       state: true,
+      available: true
     },
     {
       id: 2,
       title: "Realizar práctica obligatoria 2",
       description: "Se deberá realizar la práctica presentada en el CVG opt 2",
       state: true,
+      available: true
     },
     {
       id: 3,
       title: "Realizar práctica obligatoria 3",
       description: "Se deberá realizar la práctica presentada en el CVG opt 3",
       state: false,
+      available: true
     },
   ];
 
@@ -44,6 +47,27 @@ function App() {
     setTask(finishTask);
   };
 
+  const handleOpen = (id) => {
+    const finishTask = task.map(work => {
+      if (work.id === id) {
+        return { ...work, state: true };
+      }
+      return work;
+    });
+    setTask(finishTask);
+  };
+
+  const handleDelete = (id) => {
+    const finishTask = task.map(work => {
+      if (work.id === id) {
+        return { ...work, available: false };
+      }
+      return work;
+    });
+    setTask(finishTask);
+  };
+
+
 
   return (
     <div >
@@ -56,12 +80,16 @@ function App() {
           <CardTask
             task={task}
             handleFinish={handleFinish}
+            state={true}
           />
         </Grid>
         <Grid item md={6}>
         <b>Tareas finalizadas</b>
           <TaskFinish
             task={task}
+            handleFinish={handleOpen}
+            handleDelete={handleDelete}
+            state={false}
           />
         </Grid>
       </Grid>

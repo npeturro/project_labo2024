@@ -15,6 +15,7 @@ const NewTask = (props) => {
         const taskData = {
             id: Math.random().toString(),
             state: true,
+            available: true,
             ...enteredTaskData,
         };
         onTaskAdded(taskData)

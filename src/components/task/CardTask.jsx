@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 const CardTask = (props) => {
 
-    const { task, handleFinish } = props
+    const { task, handleFinish, state } = props
 
     return (
         <div>
